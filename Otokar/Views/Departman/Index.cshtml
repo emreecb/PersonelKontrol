@@ -1,0 +1,61 @@
+﻿@model PagedList.IPagedList<Otokar.Models.Data.Departman>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Departmanlar";
+}
+
+<br />
+@using (Html.BeginForm("Index", "Departman", FormMethod.Get))
+{
+    <div>
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input id="Submit1" type="submit" value="Departman Adı ile Ara" />
+    </div>
+
+}
+
+
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading panel-heading-custom">
+        <h4>Departmanlar</h4>
+        <a href="/Departman/Create" class="btn btn-success btn-sm tooltips pull-right" title="Yeni Personel" style="margin-top:-33px;">Yeni Departman</a>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    Departman No
+                </th>
+                <th>
+                    Departman Adı
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartmanNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DepartmanAdi)
+                    </td>
+                    <td>
+                        <a href='/Departman/Edit/@item.DepartmanNo' class='btn btn-xs btn-info tooltips' title='Düzenle'>Düzenle</a> |
+                        @*<a href='/Departman/Details/@item.DepartmanNo' class='btn btn-xs btn-warning tooltips' title='Detaylar'>Detaylar</a> |*@
+                        <a href='/Departman/Delete/@item.DepartmanNo' class='btn btn-xs btn-danger tooltips' title='Sil'>Sil</a> |
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <br />
+        @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) Sayfadan @Model.PageCount.
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</div>

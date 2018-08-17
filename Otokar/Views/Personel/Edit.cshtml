@@ -1,0 +1,142 @@
+﻿@model Otokar.Models.Data.Personel
+
+@{
+    ViewBag.Title = "Personel Düzenleme";
+}
+
+<h2>Personel Düzenleme</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.PersonelSicilNo)
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">Personel Adı</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.PersonelAdi, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">Personel Soyadı</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.PersonelSoyAdi, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">Doğum Tarihi</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.PersonelDogumTarihi, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">Doğum Yeri</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.PersonelDogumYeri, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">Cinsiyet</label>
+            <div class="col-sm-6">
+                @Html.DropDownListFor(m => m.PersonelCinsiyet, new List<SelectListItem>
+                 {
+                    new SelectListItem{ Text="Seçiniz", Value = "Erkek" },
+                    new SelectListItem{ Text="Erkek", Value = "Erkek" },
+                    new SelectListItem{ Text="Kadın", Value = "Kadın" },
+                 }, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">TC Kimlik No</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.PersonelTcNo, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">Medeni Durum</label>
+            <div class="col-sm-6">
+                @Html.DropDownListFor(m => m.PersonelMedeniDurum, new List<SelectListItem>
+                 {
+                    new SelectListItem{ Text="Seçiniz", Value = "Bekar" },
+                    new SelectListItem{ Text="Bekar", Value = "Bekar" },
+                    new SelectListItem{ Text="Evli", Value = "Evli" },
+                 }, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">İşe Başlama Tarihi</label>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(m => m.PersonelIseBaslamaTarihi, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">Meslek</label>
+            <div class="col-sm-6">
+                @Html.DropDownListFor(m => m.PersonelMeslek, ViewBag.DropdownListFor2 as SelectList, "Lütfen Seçim Yapın", new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">Departman</label>
+            <div class="col-sm-6">
+                @Html.DropDownListFor(m => m.PersonelCalistigiDepartman, ViewBag.DropdownListFor as SelectList, "Lütfen Seçim Yapın", new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <label class="col-sm-2 control-label">Görevi</label>
+            <div class="col-sm-6">
+                @Html.DropDownListFor(m => m.PersonelGorevi, ViewBag.DropdownListFor3 as SelectList, "Lütfen Seçim Yapın", new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Değişikliği Kaydet" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Listeye Geri Dön", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

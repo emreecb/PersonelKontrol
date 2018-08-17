@@ -1,0 +1,33 @@
+﻿@model Otokar.Models.Data.Meslek
+
+@{
+    ViewBag.Title = "Meslek Detayları";
+}
+
+<h2>Meslek Detayları</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Meslek No
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+
+        <dt>
+            Meslek Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeslekAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Listeye Geri Dön", "Index")
+</p>

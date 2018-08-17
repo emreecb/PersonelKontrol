@@ -1,0 +1,50 @@
+﻿@model Otokar.Models.Data.PersonelIzinleri
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PersonelIzinleri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonelAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonelSoyAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelSoyAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IzinBaslangicTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IzinBaslangicTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IzinBitisTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IzinBitisTarihi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

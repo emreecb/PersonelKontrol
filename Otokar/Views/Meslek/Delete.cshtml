@@ -1,0 +1,39 @@
+﻿@model Otokar.Models.Data.Meslek
+
+@{
+    ViewBag.Title = "Meslek Sil";
+}
+
+<h2>Meslek Sil</h2>
+
+<h3>Bu Mesleği Silmek Mi İstiyorsun?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Meslek No
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+
+        <dt>
+            Meslek Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeslekAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Geri Dön", "Index")
+        </div>
+    }
+</div>

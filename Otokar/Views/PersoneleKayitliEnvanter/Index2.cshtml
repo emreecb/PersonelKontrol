@@ -1,0 +1,104 @@
+﻿@model PagedList.IPagedList<Otokar.Models.Data.PersoneleKayitliEnvanter>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Personele Kayıtlı Envanter";
+}
+
+<br />
+@using (Html.BeginForm("Index2", "PersoneleKayitliEnvanter", FormMethod.Get))
+{
+    <div>
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input id="Submit1" type="submit" value="Personel Adı ile Ara" />
+    </div>
+
+}
+
+
+
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading panel-heading-custom">
+        <h4>Personele Kayıtlı Envanter</h4>
+        <a href="/PersoneleKayitliEnvanter/Create" class="btn btn-success btn-sm tooltips pull-right" title="Yeni Kayıt" style="margin-top:-33px;">Yeni Kayıt</a>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    Personel Adı
+                </th>
+                <th>
+                    Personel Soyadı
+                </th>
+                <th>
+                    Envanter 1
+                </th>
+                <th>
+                    Envanter 2
+                </th>
+                <th>
+                    Envanter 3
+                </th>
+                <th>
+                    Envanter 4
+                </th>
+                <th>
+                    Envanter 5
+                </th>
+                <th>
+                    Envanter 6
+                </th>
+                <th>
+                    Envanter 7
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonelAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonelSoyAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Envanter1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Envanter2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Envanter3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Envanter4)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Envanter5)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Envanter6)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Envanter7)
+                    </td>
+                    <td>
+                        <a href='/PersoneleKayitliEnvanter/Edit/@item.ID' class='btn btn-xs btn-info tooltips' title='Düzenle'>Düzenle</a> |
+                        <a href='/PersoneleKayitliEnvanter/Details/@item.ID' class='btn btn-xs btn-warning tooltips' title='Detaylar'>Detaylar</a> |
+                        <a href='/PersoneleKayitliEnvanter/Delete/@item.ID' class='btn btn-xs btn-danger tooltips' title='Sil'>Sil</a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <br/>
+        @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) Sayfadan @Model.PageCount.
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</div>

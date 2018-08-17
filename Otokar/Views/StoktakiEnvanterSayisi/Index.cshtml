@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Otokar.Models.Data.StoktakiEnvanterSayisi>
+@*@using PagedList.Mvc;*@
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+@using (Html.BeginForm("Index", "StoktakiEnvanterSayisi", FormMethod.Get))
+{
+    <div>
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input id="Submit1" type="submit" value="Envanter Adı ile Ara" />
+    </div>
+
+}
+
+
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-heading-custom">
+        <h4>Stoktaki Envanterler</h4>
+        @*<a href="/StoktakiEnvanterSayisi/Create" class="btn btn-success btn-sm tooltips pull-right" title="Yeni Personel" style="margin-top:-33px;">Yeni Envanter</a>*@
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    Envanter Adı
+                </th>
+                <th>
+                    Envanter Sayısı
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnvanterAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnvanterSayisi)
+                    </td>
+                    <td>
+                        <a href='/StoktakiEnvanterSayisi/Edit/@item.ID' class='btn btn-xs btn-info tooltips' title='Düzenle'>Düzenle</a> |
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td>
+                    @*Klavye: @Html.Raw(ViewBag.view1)
+                    Mouse: @Html.Raw(ViewBag.view2)
+                    Kasa: @Html.Raw(ViewBag.view3)
+                    Laptop: @Html.Raw(ViewBag.view4)
+                    Monitör: @Html.Raw(ViewBag.view5)
+                    Yazıcı: @Html.Raw(ViewBag.view6)*@
+                </td>
+            </tr>
+
+        </table>
+            
+        <br />
+        @*@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) Sayfadan @Model.PageCount.
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
+    </div>
+</div>

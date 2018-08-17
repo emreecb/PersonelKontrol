@@ -1,0 +1,56 @@
+﻿@model Otokar.Models.Data.PersonelIzinleri
+
+@{
+    ViewBag.Title = "Personel İzini Silme";
+}
+
+<h2>Personel İzini Silme</h2>
+
+<h3>Bu Personel İzinini Silmek Mi İstiyorsun?</h3>
+<div>
+    <h4>PersonelIzinleri</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Personel Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelAdi)
+        </dd>
+
+        <dt>
+            Personel Soyadı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelSoyAdi)
+        </dd>
+
+        <dt>
+            İzin Başlangıç Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IzinBaslangicTarihi)
+        </dd>
+
+        <dt>
+            İzin Bitiş Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IzinBitisTarihi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Geri Dön", "Index2")
+        </div>
+    }
+</div>

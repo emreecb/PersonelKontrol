@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<Otokar.Models.Data.Personel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@{
+    ViewBag.Title = "Personeller";
+}
+
+<br />
+@using (Html.BeginForm("Index", "Personel", FormMethod.Get))
+{
+    <div>
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input id="Submit1" type="submit" value="Personel Adı ile Ara" />
+    </div>
+
+}
+
+
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-heading-custom">
+        <h4>Personeller</h4>
+        <a href="/PersonelIzinleri/Index2" class="btn btn-success btn-sm tooltips pull-right" title="Yeni Personel" style="margin-top:-33px;">Personel İzinlerini Görüntüle</a>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    Personel Adı
+                </th>
+                <th>
+                    Personel Soyadı
+                </th>
+                <th>
+                    Personel Sicil No
+                </th>
+                <th>
+                    TC Kimlik No
+                </th>
+                <th>
+                    Çalıştığı Departman
+                </th>
+                <th>
+                    Görevi
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonelAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonelSoyAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonelSicilNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonelTcNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonelCalistigiDepartman)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonelGorevi)
+                    </td>
+                    <td>
+                        <a href='/PersonelIzinleri/Create/@item.PersonelSicilNo' class='btn btn-xs btn-info tooltips' title='İzin Oluştur'>İzin Oluştur</a>
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+        <br />
+        @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) Sayfadan @Model.PageCount.
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</div>

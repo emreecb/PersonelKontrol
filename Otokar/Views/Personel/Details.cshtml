@@ -1,0 +1,105 @@
+﻿@model Otokar.Models.Data.Personel
+
+@{
+    ViewBag.Title = "Personel Detayı";
+}
+
+<h2>Personel Detayı</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Personel Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelAdi)
+        </dd>
+
+        <dt>
+            Personel Soyadı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelSoyAdi)
+        </dd>
+
+        <dt>
+            Doğum Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelDogumTarihi)
+        </dd>
+
+        <dt>
+            Doğum Yeri
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelDogumYeri)
+        </dd>
+
+        <dt>
+            Cinsiyet
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelCinsiyet)
+        </dd>
+
+        <dt>
+            TC Kimlik No
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelTcNo)
+        </dd>
+
+        <dt>
+            Medeni Durum
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelMedeniDurum)
+        </dd>
+
+        <dt>
+            İşe Başlama Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelIseBaslamaTarihi)
+        </dd>
+
+        <dt>
+            Meslek
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelMeslek)
+        </dd>
+
+        <dt>
+            Departman
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelCalistigiDepartman)
+        </dd>
+
+        <dt>
+            Görevi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelGorevi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.PersonelSicilNo }) |
+    @Html.ActionLink("Listeye Geri Dön", "Index")
+</p>

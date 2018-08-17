@@ -1,0 +1,77 @@
+﻿@model PagedList.IPagedList<Otokar.Models.Data.PersonelIzinleri>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@{
+    ViewBag.Title = "Personel İzinleri";
+}
+
+<br />
+@using (Html.BeginForm("Index2", "PersonelIzinleri", FormMethod.Get))
+{
+    <div>
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input id="Submit1" type="submit" value="Personel Adı ile Ara" />
+    </div>
+
+}
+
+
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-heading-custom">
+        <h4>Personel İzinleri</h4>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    Personel Adı
+                </th>
+                <th>
+                    Personel Soyadı
+                </th>
+                <th>
+                    İzin Başlangıç Tarihi
+                </th>
+                <th>
+                    İzin Bitiş Tarihi
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonelAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PersonelSoyAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IzinBaslangicTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IzinBitisTarihi)
+                    </td>                    
+                    <td>
+                        <a href='/PersonelIzinleri/Edit/@item.ID' class='btn btn-xs btn-info tooltips' title='Düzenle'>Düzenle</a> |
+                        @*<a href='/PersonelIzinleri/Details/@item.ID' class='btn btn-xs btn-warning tooltips' title='Detaylar'>Detaylar</a> |*@
+                        <a href='/PersonelIzinleri/Delete/@item.ID' class='btn btn-xs btn-danger tooltips' title='Sil'>Sil</a>
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+        <br />
+        @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) Sayfadan @Model.PageCount.
+
+        @Html.PagedListPager(Model, page => Url.Action("Index2",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</div>

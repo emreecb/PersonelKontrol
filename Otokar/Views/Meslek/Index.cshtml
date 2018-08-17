@@ -1,0 +1,60 @@
+﻿@model PagedList.IPagedList<Otokar.Models.Data.Meslek>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Meslekler";
+}
+
+<br />
+@using (Html.BeginForm("Index", "Meslek", FormMethod.Get))
+{
+    <div>
+        @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input id="Submit1" type="submit" value="Meslek Adı ile Ara" />
+    </div>
+
+}
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-heading-custom">
+        <h4>Meslekler</h4>
+        <a href="/Meslek/Create" class="btn btn-success btn-sm tooltips pull-right" title="Yeni Meslek" style="margin-top:-33px;">Yeni Meslek</a>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>
+                    Meslek No
+                </th>
+                <th>
+                    Meslek Adı
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MeslekAdi)
+                    </td>
+                    <td>
+                        <a href='/Meslek/Edit/@item.ID' class='btn btn-xs btn-info tooltips' title='Düzenle'>Düzenle</a> |
+                        @*<a href='/Meslek/Details/@item.ID' class='btn btn-xs btn-warning tooltips' title='Detaylar'>Detaylar</a> |*@
+                        <a href='/Meslek/Delete/@item.ID' class='btn btn-xs btn-danger tooltips' title='Sil'>Sil</a> |
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <br />
+        @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) Sayfadan @Model.PageCount.
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model Otokar.Models.Data.Departman
+
+@{
+    ViewBag.Title = "Departman Sil";
+}
+
+<h2>Departman Sil</h2>
+
+<h3>Bu Departmanı Silmek Mi İstiyorsun?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Departman No
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmanNo)
+        </dd>
+
+        <dt>
+            Departman Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmanAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Geri Dön", "Index")
+        </div>
+    }
+</div>

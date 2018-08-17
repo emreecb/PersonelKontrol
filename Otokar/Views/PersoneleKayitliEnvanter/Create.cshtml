@@ -1,0 +1,113 @@
+﻿@model Otokar.Models.Data.PersoneleKayitliEnvanter
+
+@{
+    ViewBag.Title = "Oluştur";
+}
+
+<h2>Oluştur</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Personele Kayıtlı Envanter</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="col-sm-2 control-label">Personel Adı</label>
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(m => m.PersonelAdi, ViewBag.DropdownListFor1 as SelectList, "Lütfen Seçim Yapınız.", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="col-sm-2 control-label">Personel Soyadı</label>
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(m => m.PersonelSoyAdi, ViewBag.DropdownListFor2 as SelectList, "Lütfen Seçim Yapınız.", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="col-sm-2 control-label">Envanter 1</label>
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(m => m.Envanter1, ViewBag.DropdownListFor as SelectList, "--------------------", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="col-sm-2 control-label">Envanter 2</label>
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(m => m.Envanter2, ViewBag.DropdownListFor as SelectList, "--------------------", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="col-sm-2 control-label">Envanter 3</label>
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(m => m.Envanter3, ViewBag.DropdownListFor as SelectList, "--------------------", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="col-sm-2 control-label">Envanter 4</label>
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(m => m.Envanter4, ViewBag.DropdownListFor as SelectList, "--------------------", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="col-sm-2 control-label">Envanter 5</label>
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(m => m.Envanter5, ViewBag.DropdownListFor as SelectList, "--------------------", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="col-sm-2 control-label">Envanter 6</label>
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(m => m.Envanter6, ViewBag.DropdownListFor as SelectList, "--------------------", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="col-sm-2 control-label">Envanter 7</label>
+                <div class="col-sm-6">
+                    @Html.DropDownListFor(m => m.Envanter7, ViewBag.DropdownListFor as SelectList, "--------------------", new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Oluştur" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Listeye Dön", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

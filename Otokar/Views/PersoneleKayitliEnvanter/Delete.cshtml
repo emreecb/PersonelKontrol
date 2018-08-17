@@ -1,0 +1,96 @@
+﻿@model Otokar.Models.Data.PersoneleKayitliEnvanter
+
+@{
+    ViewBag.Title = "Kayıt Sil";
+}
+
+<h2>Kayıt Sil</h2>
+
+<h3>Bu Kaydı Silmek İstediğine Emin Misin?</h3>
+<div>
+    <h4>Personele Kayıtlı Envanter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Personel Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelAdi)
+        </dd>
+
+        <dt>
+            Personel Soyadı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonelSoyAdi)
+        </dd>
+
+        <dt>
+            Envanter 1
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Envanter1)
+        </dd>
+
+        <dt>
+            Envanter 2
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Envanter2)
+        </dd>
+
+        <dt>
+            Envanter 3
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Envanter3)
+        </dd>
+
+        <dt>
+            Envanter 4
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Envanter4)
+        </dd>
+
+        <dt>
+            Envanter 5
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Envanter5)
+        </dd>
+
+        <dt>
+            Envanter 6
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Envanter6)
+        </dd>
+
+        <dt>
+            Envanter 7
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Envanter7)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>
